@@ -34,11 +34,11 @@ const SideBar = () => {
     };
 
     return (
-        <div className='container mx-auto w-full max-w-[88rem] flex-1 items-start px-4 lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 lg:px-8 border-r-2 border-[#504f4f]'>
+        <div className='container mx-auto w-full max-w-[88rem] flex-1 items-start px-4 lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 lg:px-8 border-r-1 border-dashed border-[#504f4f] bg-white dark:bg-black'>
             <aside className='fixed  z-30 -ml-2 hidden h-[calc(100vh-6.5rem)] w-full shrink-0 lg:sticky lg:block lg:self-start'>
-                <div className='relative overflow-hidden h-full py-6 pr-6 lg:py-8'>
-                    <h5 className='mb-1 rounded-md px-2 py-1 text-sm font-semibold text-black dark:text-white'> Components</h5>
-                    <div className='grid grid-flow-row auto-rows-max text-sm px-2 py-1'>
+                <div className='relative overflow-hidden h-full py-6 pr-3 lg:py-8'>
+                    <h5 className='mb-1 rounded-md px-2 py-1  font-semibold text-black dark:text-white'> Components</h5>
+                    <div className='grid grid-flow-row auto-rows-max px-2 py-1 text-black dark:text-white'>
                         {sections.map((section) => (
                             <div key={section.title}>
                                 <button
@@ -55,7 +55,7 @@ const SideBar = () => {
                                 {openSections.includes(section.title) && (
                                     <ul className="ml-6 mt-1 space-y-1">
                                         {section.items.map((item) => (
-                                            <li className="text-sm hover:underline cursor-pointer" key={item}>
+                                            <li className=" hover:underline cursor-pointer text-lg" key={item}>
                                                 <Link href={`/Home/${item}`} >
                                                     {item}
                                                 </Link>

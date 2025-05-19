@@ -1,14 +1,29 @@
 'use client';
 
-import { Sun } from 'lucide-react';
+import { MoonIcon, Sun, } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { FiSearch } from 'react-icons/fi'; 
+import { FiSearch } from 'react-icons/fi';
 
 export default function Navbar() {
     const [text, setText] = useState('');
     const [isMounted, setIsMounted] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        if (typeof window !== "undefined") { return localStorage.getItem("theme") === "dark"; }
+    });
+
+    useEffect(() => {
+        const root = window.document.documentElement;
+
+        if (darkMode) {
+            root.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            root.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        }
+    }, [darkMode]);
 
     useEffect(() => {
         setIsMounted(true);
@@ -18,7 +33,7 @@ export default function Navbar() {
 
 
     return (
-        <nav className="flex items-center justify-between px-6 py-3 bg-black text-white font-medium border-b-2 border-[#504f4f]">
+        <nav className="flex items-center justify-between px-6 py-3 bg-black text-white font-medium border-b-1 border-dashed border-[#504f4f]">
             {/* Left Section */}
             <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-2 relative z-10 overflow-visible">
@@ -45,7 +60,8 @@ export default function Navbar() {
             <div className="flex items-center space-x-5 text-sm text-gray-300">
                 <FaDiscord className="cursor-pointer" />
                 <FaTwitter className="cursor-pointer" />
-                <Sun className="cursor-pointer" />
+
+                {darkMode ? <MoonIcon className="cursor-pointer" onClick={() => setDarkMode(!darkMode)} /> : <Sun className="cursor-pointer" onClick={() => setDarkMode(!darkMode)} />}
                 <div className="flex items-center space-x-2 bg-zinc-900 px-3 py-1.5 rounded-full border border-zinc-700">
                     <FiSearch className="text-gray-400" />
                     <input

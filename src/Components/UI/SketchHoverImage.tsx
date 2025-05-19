@@ -25,9 +25,7 @@ export const SketchHoverImage = ({ imageUrl }: { imageUrl: string }) => {
     };
 
     return (
-        <div className="relative w-full h-full overflow-hidden group items-center justify-center flex"
-
-        >
+        <div className="relative w-full h-full overflow-hidden group items-center justify-center flex">
             <motion.div ref={cardRef}
                 className="relative w-64 h-64  overflow-hidden group  grayscale hover:grayscale-0"
                 onMouseEnter={handleMouseEnter}
