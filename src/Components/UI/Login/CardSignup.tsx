@@ -14,21 +14,21 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
     const [password, setPassword] = useState("");
 
     return (
-        <Card color="light" className="mx-auto max-w-md h-[670px] p-6">
+        <Card color="light" className="mx-auto max-w-md h-[670px] p-6 dark:bg-white border-2 border-amber-600">
             <CardHeader color="light" className="text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
                     <span className="text-xl text-white">
                         <LuLockKeyhole />
                     </span>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-600">Create an Account</h2>
-                <p className="mt-1 text-gray-500">Sign up to get started</p>
+                <h2 className="text-2xl font-bold text-gray-600 dark:text-black">Create an Account</h2>
+                <p className="mt-1 text-gray-500 dark:text-black">Sign up to get started</p>
             </CardHeader>
 
             <CardContent color="light">
                 <div className="space-y-6">
                     <div>
-                        <label htmlFor="name" className="text-start mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="name" className="text-start mb-1 block text-sm font-medium text-gray-700 dark:text-black">
                             Full Name
                         </label>
                         <div className="relative">
@@ -41,13 +41,13 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
                                 aria-label="Full Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500"
+                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500 placeholder:text-gray-500"
                                 placeholder="John Doe"
                             />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="email" className="text-start mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className="text-start mb-1 block text-sm font-medium text-gray-700 dark:text-black">
                             Email Address
                         </label>
                         <div className="relative">
@@ -60,13 +60,13 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
                                 aria-label="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500"
+                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500 placeholder:text-gray-500"
                                 placeholder="you@example.com"
                             />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="password" className="text-start mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="password" className="text-start mb-1 block text-sm font-medium text-gray-700 dark:text-black">
                             Password
                         </label>
                         <div className="relative">
@@ -79,7 +79,7 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
                                 aria-label="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500"
+                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500 placeholder:text-gray-500"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -93,7 +93,7 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
             </CardContent>
 
             <CardFooter color="light" className="border-t border-gray-100 text-center flex-col">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-black">
                     Already have an account?{" "}
                     <button onClick={onFlip} className="font-medium text-blue-600 hover:underline">
                         Sign In
@@ -104,8 +104,8 @@ function CardSignup({ onFlip }: { onFlip: () => void }) {
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-gray-200"></div>
                         </div>
-                        <div className="relative flex justify-center text-sm">
-                            <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                        <div className="relative flex justify-center text-sm ">
+                            <span className="px-2 bg-blue-600 text-white">Or continue with</span>
                         </div>
                     </div>
 

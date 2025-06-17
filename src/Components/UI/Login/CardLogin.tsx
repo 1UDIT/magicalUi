@@ -13,7 +13,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
     const [rememberMe, setRememberMe] = useState(false);
 
     return (
-        <Card color="light" className="mx-auto max-w-md h-[670px] p-6">
+        <Card color="light" className="mx-auto max-w-md h-[670px] p-6 dark:bg-white border-2 border-amber-600  ">
 
             <CardHeader color="light" className="text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
@@ -21,8 +21,8 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                         <LuLockKeyhole />
                     </span>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-600">Welcome Back</h2>
-                <p className="mt-1 text-gray-500">
+                <h2 className="text-2xl font-bold text-gray-600 dark:text-black">Welcome Back</h2>
+                <p className="mt-1 text-gray-500 dark:text-black">
                     Sign in to continue to your account
                 </p>
             </CardHeader>
@@ -31,7 +31,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                 <div className="space-y-6">
                     {/* Email */}
                     <div>
-                        <label htmlFor="email" className="text-start mb-1 block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className="text-start mb-1 block text-sm font-medium text-gray-700 dark:text-black">
                             Email Address
                         </label>
                         <div className="relative">
@@ -44,7 +44,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                                 aria-label="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500"
+                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500 placeholder:text-gray-500"
                                 placeholder="you@example.com"
                             />
                         </div>
@@ -53,16 +53,16 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                     {/* Password */}
                     <div>
                         <div className="mb-1 flex items-center justify-between">
-                            <label htmlFor="password" className="text-sm font-medium text-gray-700">
+                            <label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-black">
                                 Password
                             </label>
-                            <a href="#" className="text-sm text-blue-600 hover:underline">
+                            <a href="#" className="text-sm text-blue-600 hover:underline dark:text-black">
                                 Forgot password?
                             </a>
                         </div>
                         <div className="relative">
                             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <LuKeyRound className="text-gray-500" />
+                                <LuKeyRound className="text-gray-500 dark:text-black" />
                             </div>
                             <input
                                 type="password"
@@ -70,7 +70,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                                 aria-label="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500"
+                                className="block w-full rounded-lg border border-gray-300 py-2 pr-3 pl-10 focus:border-blue-500 focus:ring-blue-500 placeholder:text-gray-500"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -83,22 +83,22 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                             type="checkbox"
                             checked={rememberMe}
                             onChange={() => setRememberMe(!rememberMe)}
-                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:text-black"
                         />
-                        <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-700">
+                        <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-700 dark:text-black">
                             Remember me
                         </label>
                     </div>
 
                     {/* Submit Button */}
-                    <Button className="w-full py-2 font-medium text-white transition-colors duration-300 bg-blue-700 hover:bg-blue-500 cursor-pointer">
+                    <Button className="w-full py-2 font-medium text-white transition-colors duration-300 bg-blue-700 hover:bg-blue-500 cursor-pointer dark:text-black">
                         Sign In
                     </Button>
                 </div>
             </CardContent>
 
             <CardFooter color="light" className="border-t border-gray-100 text-center flex-col">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-black">
                     Don't have an account?{" "}
                     <button onClick={onFlip} className="font-medium text-blue-600 hover:underline">
                         Sign up
@@ -112,7 +112,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                             <div className="w-full border-t border-gray-200"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                            <span className="px-2 bg-blue-600 text-white">Or continue with</span>
                         </div>
                     </div>
 

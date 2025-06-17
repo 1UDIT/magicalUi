@@ -82,24 +82,18 @@ export const AnimationShareBtn: React.FC<MagicalShareMenuProps> = ({
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative "
+    <motion.div
+      className="relative z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer"
+      onClick={() => setIsOpen((prev) => !prev)}
+      animate={{
+        rotate: isOpen ? 360 : 0,
+        boxShadow: isOpen
+          ? "0 6px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px #333, 0 0 0 8px #fff"
+          : "0 3px 4px rgba(0, 0, 0, 0.15)",
+      }}
+      transition={{ duration: 0.5 }}
     >
-      <motion.div
-        className="relative z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer"
-        onClick={() => setIsOpen((prev) => !prev)}
-        animate={{
-          rotate: isOpen ? 360 : 0,
-          boxShadow: isOpen
-            ? "0 6px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px #333, 0 0 0 8px #fff"
-            : "0 3px 4px rgba(0, 0, 0, 0.15)",
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <MdIosShare className="w-6 h-6 text-gray-800" />
-      </motion.div>
-
+      <MdIosShare className="w-6 h-6 text-gray-800" />
       {socialLinks.map((link, index) => (
         <SocialLink
           key={index}
@@ -111,6 +105,6 @@ export const AnimationShareBtn: React.FC<MagicalShareMenuProps> = ({
           url={link.url}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };

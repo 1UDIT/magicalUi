@@ -11,8 +11,8 @@ import { useState } from "react";
 const page = () => {
     const [activeTab, setActiveTab] = useState("Preview");
 
-    const codeString = 
-`import React from 'react'; 
+    const codeString =
+        `import React from 'react'; 
 
 function App() {
   return (

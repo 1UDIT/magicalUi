@@ -1,6 +1,6 @@
- 
+
 import { memo, useCallback, useEffect, useRef } from "react";
-import { animate } from "motion/react"; 
+import { animate } from "motion/react";
 import { cn } from "@/Lib/utils";
 
 interface GlowingButtonProps {
@@ -19,7 +19,7 @@ interface GlowingButtonProps {
 export const GlowingButton = memo(({
   children,
   onClick,
-  className, 
+  className,
   disabled = false,
   blur = 6,
   spread = 20,
