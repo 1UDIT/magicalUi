@@ -1,6 +1,6 @@
 'use client'
 
-import { TypingAnimation } from '@/Components/UI/TypingAnimation'
+import { TypingAnimation } from '@/components/UI/TypingAnimation'
 import React from 'react'
 
 const page = () => {

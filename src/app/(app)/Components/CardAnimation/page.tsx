@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimationCard } from '@/Components/UI/AnimationCard' 
+import { AnimationCard } from '@/components/UI/AnimationCard' 
 import React from 'react'
 
 const page = () => {

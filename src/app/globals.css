@@ -58,11 +58,21 @@
 
 @keyframes rotate {
   0% {
-    --animate-duration: 0deg; 
+    --animate-duration: 0deg;
   }
 
   100% {
-    --animate-duration: 360deg;  
+    --animate-duration: 360deg;
+  }
+}
+
+@theme inline {
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
   }
 }
 
@@ -83,7 +93,7 @@
   animation: rotate 3s infinite linear;
 }
 
-.btn:hover:before { 
+.btn:hover:before {
   filter: blur(1.5rem);
   opacity: 0.6;
 }
@@ -161,8 +171,8 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-

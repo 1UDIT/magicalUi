@@ -4,14 +4,12 @@ import { MoonIcon, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { cn } from '@/Lib/utils';
-import { Button } from '../UI/Button';
-import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';  
+import { MobileNav } from './MobileNav';
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false)
     const [darkMode, setDarkMode] = useState(false);
-    const [isMounted, setIsMounted] = useState(false); 
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -36,7 +34,8 @@ export default function Navbar() {
     return (
         <nav className="flex items-center justify-between px-6 py-3 bg-black text-white font-medium border-b-1 border-dashed border-[#504f4f]">
             {/* Left Section */}
-            <div className="flex items-center space-x-6">
+            <MobileNav/>
+            <div className="hidden lg:flex items-center space-x-6">
                 <div className="flex items-center space-x-2 relative z-10 overflow-visible">
                     <div className="relative w-8 h-8">
                         <div className="relative z-10 flex items-center justify-center w-full h-full bg-white text-black rounded-md font-bold">
@@ -48,11 +47,11 @@ export default function Navbar() {
                 </div>
 
                 <ul className="flex items-center space-x-5 text-sm text-gray-300">
-                    <Link href={"/Components"}>Components</Link>
+                    <Link href={"/components"}>Components</Link>
                 </ul>
             </div>
-
-            {/* <div className="flex items-center space-x-5 text-sm text-gray-300">
+            <div className="flex items-center space-x-5 text-sm text-gray-300">
+                <SearchBar className="hidden lg:flex" />
                 <FaDiscord className="cursor-pointer" />
                 <FaTwitter className="cursor-pointer" />
                 {isMounted && (
@@ -60,21 +59,7 @@ export default function Navbar() {
                         ? <MoonIcon className="cursor-pointer" onClick={() => setDarkMode(false)} />
                         : <Sun className="cursor-pointer" onClick={() => setDarkMode(true)} />
                 )}
-                <Button
-                    variant="outline"
-                    className={cn(
-                        "relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
-                    )}
-                    onClick={() => setOpen(true)}
-                >
-                    <span className="hidden lg:inline-flex">Search documentation...</span>
-                    <span className="inline-flex lg:hidden">Search...</span>
-                    <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                        <span className="text-xs">⌘</span>K
-                    </kbd>
-                </Button>
-            </div> */}
-            <SearchBar />
+            </div>
         </nav>
     );
 }

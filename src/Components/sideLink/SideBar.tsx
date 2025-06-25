@@ -56,7 +56,7 @@ const SideBar = () => {
                                     <ul className="ml-6 mt-1 space-y-1">
                                         {section.items.map((item) => (
                                             <li className=" hover:underline cursor-pointer text-lg" key={item}>
-                                                <Link href={`/Components/${item}`} >
+                                                <Link href={`/components/${item}`} >
                                                     {item}
                                                 </Link>
                                             </li>

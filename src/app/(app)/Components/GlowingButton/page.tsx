@@ -1,6 +1,6 @@
 'use client'
 
-import { GlowingButton } from '@/Components/UI/GlowingButton'
+import { GlowingButton } from '@/components/UI/GlowingButton'
 import React from 'react'
 
 const page = () => {

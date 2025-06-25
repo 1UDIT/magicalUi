@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CardLogin from '@/Components/UI/Login/CardLogin'
-import CardSignup from '@/Components/UI/Login/CardSignup'
+import CardLogin from '@/components/UI/Login/CardLogin'
+import CardSignup from '@/components/UI/Login/CardSignup'
 import React from 'react'
 
 const page = () => {

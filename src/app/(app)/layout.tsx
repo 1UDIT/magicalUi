@@ -1,4 +1,4 @@
-import Navbar from "@/Components/NavBar/NavBar";
+import Navbar from "@/components/NavBar/NavBar";
 
 
 

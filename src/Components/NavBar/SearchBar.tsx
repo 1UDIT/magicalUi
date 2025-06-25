@@ -14,66 +14,61 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/Components/UI/dialog"
-import { docsConfig } from "@/app/Config/docs"
+} from "@/components/UI/dialog"
+import { docsConfig } from "@/Config/docs"
 import { useRouter } from 'next/navigation';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, } from '../UI/command';
 import { useIsMac } from '@/Hook/useMac';
-import { useMutationObserver } from '@/Hook/use-mutation-observer';
 import { FcDownLeft } from 'react-icons/fc';
 
-function SearchBar() {
+function SearchBar({
+    className,
+}: {
+    className?: string
+}) {
     const [open, setOpen] = useState(false)
-    const [darkMode, setDarkMode] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
     const router = useRouter()
     const isMac = useIsMac();
     const [selectedType, setSelectedType] = useState<
         "color" | "page" | "component" | "block" | null
     >(null);
-    const [copyPayload, setCopyPayload] = useState("");  
+    const [copyPayload, setCopyPayload] = useState("");
+
+
 
     useEffect(() => {
-        setIsMounted(true);
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark") {
-            setDarkMode(true);
+        const down = (e: KeyboardEvent) => {
+            if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+                if (
+                    (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+                    e.target instanceof HTMLInputElement ||
+                    e.target instanceof HTMLTextAreaElement ||
+                    e.target instanceof HTMLSelectElement
+                ) {
+                    return
+                }
+
+                e.preventDefault()
+                setOpen((open) => !open)
+            }
         }
-    }, []);
 
-    useEffect(() => {
-        if (!isMounted) return;
-        const root = window.document.documentElement;
-        if (darkMode) {
-            root.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            root.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode, isMounted]);
+        document.addEventListener("keydown", down)
+        return () => document.removeEventListener("keydown", down)
+    }, [])
 
-   
-    const handleColorHighlight = useCallback(
-        (color: any) => {
-            setSelectedType("color")
-            setCopyPayload(color.className)
-        },
-        [setSelectedType, setCopyPayload]
-    );
-
-   
     const runCommand = useCallback((command: () => unknown) => {
         setOpen(false)
         command()
     }, []);
+
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="secondary"
                     className={cn(
-                        "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start pl-2.5 font-normal shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
+                        "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start pl-2.5 font-normal shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64", className
                     )}
                     onClick={() => setOpen(true)}
                 >
@@ -99,43 +94,25 @@ function SearchBar() {
                         <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
                             No results found.
                         </CommandEmpty>
-                        {/* {tree.children.map((group) => (
-                            <CommandGroup
-                                key={group.$id}
-                                heading={group.name}
-                                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
-                            >
-                                {group.type === "folder" &&
-                                    group.children.map((item) => {
-                                        if (item.type === "page") {
-                                            const isComponent = item.url.includes("/components/")
-
-                                            return (
-                                                <CommandMenuItem
-                                                    key={item.url}
-                                                    value={
-                                                        item.name?.toString()
-                                                            ? `${group.name} ${item.name}`
-                                                            : ""
-                                                    }
-                                                    keywords={isComponent ? ["component"] : undefined}
-                                                    onSelect={() => {
-                                                        runCommand(() => router.push(item.url))
-                                                    }}
-                                                >
-                                                    {isComponent ? (
-                                                        <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
-                                                    ) : (
-                                                        <ArrowDownRight />
-                                                    )}
-                                                    {item.name}
-                                                </CommandMenuItem>
-                                            )
-                                        }
-                                        return null
-                                    })}
+                        {docsConfig.sidebarNav.map((group) => (
+                            <CommandGroup key={group.title} heading={group.title}>
+                                {group.items.map((navItem) => (
+                                    <CommandItem
+                                        key={navItem.href}
+                                        value={navItem.title}
+                                        onSelect={() => {
+                                            runCommand(() => router.push(navItem.href as string))
+                                        }}
+                                    >
+                                        <div className="mr-2 flex h-4 w-4 items-center justify-center">
+                                            <Circle className="h-3 w-3" />
+                                        </div>
+                                        {navItem.title}
+                                    </CommandItem>
+                                ))}
                             </CommandGroup>
-                        ))}  */}
+                        ))}
+
                     </CommandList>
                 </Command>
                 <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">
@@ -149,7 +126,7 @@ function SearchBar() {
                         {selectedType === "color" ? "Copy OKLCH" : null}
                     </div>
                     {copyPayload && (
-                        <> 
+                        <>
                             <div className="flex items-center gap-1">
                                 <CommandMenuKbd>{isMac ? "⌘" : "Ctrl"}</CommandMenuKbd>
                                 <CommandMenuKbd>C</CommandMenuKbd>
@@ -162,47 +139,6 @@ function SearchBar() {
         </Dialog>
     );
 }
-
-
-function CommandMenuItem({
-    children,
-    className,
-    onHighlight,
-    ...props
-}: React.ComponentProps<typeof CommandItem> & {
-    onHighlight?: () => void
-    "data-selected"?: string
-    "aria-selected"?: string
-}) {
-    const ref = useRef<HTMLDivElement>(null)
-
-    useMutationObserver(ref, (mutations) => {
-        mutations.forEach((mutation) => {
-            if (
-                mutation.type === "attributes" &&
-                mutation.attributeName === "aria-selected" &&
-                ref.current?.getAttribute("aria-selected") === "true"
-            ) {
-                onHighlight?.()
-            }
-        })
-    })
-
-    return (
-        <CommandItem
-            ref={ref}
-            className={cn(
-                "data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-9 rounded-md border border-transparent !px-3 font-medium",
-                className
-            )}
-            {...props}
-        >
-            {children}
-        </CommandItem>
-    )
-}
-
-
 
 function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
     return (

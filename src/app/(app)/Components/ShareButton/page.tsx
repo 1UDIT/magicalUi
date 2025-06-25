@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimationShareBtn } from '@/Components/UI/AnimationShareBtn'
+import { AnimationShareBtn } from '@/components/UI/AnimationShareBtn'
 import { FaFacebook } from 'react-icons/fa'
 import { BsGithub, BsInstagram, BsTwitterX } from 'react-icons/bs'
 import { FaWhatsapp } from "react-icons/fa";
