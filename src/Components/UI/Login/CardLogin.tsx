@@ -91,7 +91,7 @@ function CardLogin({ onFlip }: { onFlip: () => void }) {
                     </div>
 
                     {/* Submit Button */}
-                    <Button className="w-full py-2 font-medium text-white transition-colors duration-300 bg-blue-700 hover:bg-blue-500 cursor-pointer dark:text-black">
+                    <Button className="w-full py-2 font-medium text-black transition-colors duration-300 bg-blue-700 hover:bg-blue-500 cursor-pointer dark:text-white">
                         Sign In
                     </Button>
                 </div>

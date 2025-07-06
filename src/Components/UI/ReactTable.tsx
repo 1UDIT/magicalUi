@@ -222,9 +222,9 @@ export default function ReactTable() {
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
             >
-                <div className="flex gap-4">
+                <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4">
                     {/* Draggable List */}
-                    <div className="w-64 border border-gray-300 rounded p-2">
+                    <div className="w-full border border-gray-300 rounded p-2">
                         <h4 className="font-semibold mb-2">Reorder & Toggle Columns</h4>
                         <div className="inline-block border border-black shadow rounded w-full">
                             <div className="px-1 border-b border-black">

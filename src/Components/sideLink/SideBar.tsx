@@ -16,10 +16,10 @@ const sections = [
         title: "Content Display",
         items: ["Card", "TypingText", "CardAnimation", "TanstackTable"],
     },
-    {
-        title: "Navigation",
-        items: ["Breadcrumb", "Footer", "Navbar", "Tabs"],
-    },
+    // {
+    //     title: "Navigation",
+    //     items: ["Breadcrumb", "Footer", "Navbar", "Tabs"],
+    // },
 ];
 
 const SideBar = () => {
@@ -43,7 +43,7 @@ const SideBar = () => {
                             <div key={section.title}>
                                 <button
                                     onClick={() => toggleSection(section.title)}
-                                    className="flex items-center w-full text-left font-medium hover:bg-gray-800 rounded px-2 py-1"
+                                    className="flex items-center w-full text-left font-medium hover:bg-gray-100 dark:hover:bg-gray-800 rounded px-2 py-1"
                                 >
                                     {openSections.includes(section.title) ? (
                                         <ChevronDown className="mr-2 h-4 w-4" />
@@ -55,7 +55,7 @@ const SideBar = () => {
                                 {openSections.includes(section.title) && (
                                     <ul className="ml-6 mt-1 space-y-1">
                                         {section.items.map((item) => (
-                                            <li className=" hover:underline cursor-pointer text-lg" key={item}>
+                                            <li className=" hover:underline cursor-pointer text-lg hover:bg-gray-100 dark:hover:bg-gray-800" key={item}>
                                                 <Link href={`/components/${item}`} >
                                                     {item}
                                                 </Link>

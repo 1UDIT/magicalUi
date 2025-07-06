@@ -1,6 +1,6 @@
 'use client'
 
-import { SketchHoverImage } from '@/components/UI/SketchHoverImage'
+import { SketchHoverImage } from '@/Components/UI/SketchHoverImage'
 import React from 'react'
 
 const page = () => {

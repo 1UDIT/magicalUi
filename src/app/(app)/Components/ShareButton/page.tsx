@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimationShareBtn } from '@/components/UI/AnimationShareBtn'
+import { AnimationShareBtn } from '@/Components/UI/AnimationShareBtn'
 import { FaFacebook } from 'react-icons/fa'
 import { BsGithub, BsInstagram, BsTwitterX } from 'react-icons/bs'
 import { FaWhatsapp } from "react-icons/fa";
@@ -35,8 +35,7 @@ export default App;`;
 
 
     return (
-        <div>
-            <p>Share Animation Button</p>
+        <div> 
             <div className="w-full h-[450px] mx-auto  dark:bg-black bg-white text-white rounded-lg shadow-md p-4 mt-10 border border-[#504f4f] p-2">
                 <div className="border-b border-dashed border-[#504f4f]">
                     <button

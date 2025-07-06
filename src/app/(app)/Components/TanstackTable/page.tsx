@@ -1,6 +1,6 @@
 'use client'
 
-import ReactTable from '@/components/UI/ReactTable'
+import ReactTable from '@/Components/UI/ReactTable'
 import React from 'react'
 
 const page = () => {

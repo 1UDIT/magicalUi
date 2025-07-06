@@ -7,7 +7,7 @@ import {
     Sheet,
     SheetContent,
     SheetTrigger,
-} from "@/components/UI/sheet";
+} from "@/Components/UI/sheet";
 import { docsConfig } from "@/Config/docs";
 import { useRouter } from "next/navigation";
 import { cn } from "@/Lib/utils";
@@ -53,22 +53,23 @@ export function MobileNav() {
                     <span className="sr-only">Toggle Menu</span>
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="space-y-0 gap-0">
-                <Link
-                    href="/"
-                    onClick={() => {
-                        setIsOpen(false);
-                    }}
-                    className="flex items-center h-16 px-4 border-b border-border"
-                >
-                    <span className="font-bold">MagicalUI</span>
-                </Link>
-                <div className="flex flex-col gap-8">
-                    {docsConfig.sidebarNav.map((group, index) => (
-                        <div key={index} className="flex flex-col gap-4">
-                            <div className="flex flex-col gap-3">
-                                {group.items.map((navItem) => {
-                                    return (
+            <SheetContent side="left" className="p-0">
+                <div className="flex flex-col h-full">
+                    {/* Header Link */}
+                    <Link
+                        href="/"
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center h-16 px-4 border-b border-border"
+                    >
+                        <span className="font-bold">MagicalUI</span>
+                    </Link>
+
+                    {/* Scrollable Nav Content */}
+                    <div className="flex-1 overflow-y-auto px-4 py-6">
+                        <div className="flex flex-col gap-6">
+                            {docsConfig.sidebarNav.map((group, index) => (
+                                <div key={index} className="flex flex-col gap-4">
+                                    {group.items.map((navItem) => (
                                         <MobileLink
                                             key={`${navItem.href}-${index}`}
                                             href={navItem.href}
@@ -76,15 +77,15 @@ export function MobileNav() {
                                         >
                                             {navItem.title}
                                         </MobileLink>
-                                    )
-                                })}
-                            </div>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
-
             </SheetContent>
-        </Sheet>
+
+        </Sheet >
     );
 }
 
@@ -95,22 +96,23 @@ function MobileLink({
     children,
     ...props
 }: LinkProps & {
-    onOpenChange?: (open: boolean) => void
-    children: React.ReactNode
-    className?: string
+    onOpenChange?: (open: boolean) => void;
+    children: React.ReactNode;
+    className?: string;
 }) {
-    const router = useRouter()
+    const router = useRouter();
+
     return (
         <Link
             href={href}
             onClick={() => {
-                router.push(href.toString())
-                onOpenChange?.(false)
+                router.push(href.toString());
+                onOpenChange?.(false);
             }}
-            className={cn("text-2xl font-medium", className)}
+            className={cn("text-2xl font-medium px-4 py-1 hover:bg-accent rounded", className)}
             {...props}
         >
             {children}
         </Link>
-    )
+    );
 }

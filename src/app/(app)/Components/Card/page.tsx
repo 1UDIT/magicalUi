@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CardLogin from '@/components/UI/Login/CardLogin'
-import CardSignup from '@/components/UI/Login/CardSignup'
+import CardLogin from '@/Components/UI/Login/CardLogin'
+import CardSignup from '@/Components/UI/Login/CardSignup'
 import React from 'react'
 
 const page = () => {
     const [flipped, setFlipped] = useState(false);
     return (
         <div className="w-full flex items-center justify-center">
-            <div className="relative  top-10 perspective-[1500px] w-[400px] h-[600px]">
+            <div className="relative  perspective-[1500px] w-[400px] h-[600px]">
                 <motion.div
                     className="absolute w-full h-full transition-transform duration-700 [transform-style:preserve-3d]"
                     animate={{ rotateY: flipped ? 180 : 0 }}

@@ -32,7 +32,7 @@ export default function Navbar() {
     }, [darkMode, isMounted]);
 
     return (
-        <nav className="flex items-center justify-between px-6 py-3 bg-black text-white font-medium border-b-1 border-dashed border-[#504f4f]">
+        <nav className="flex items-center justify-between px-6 py-3 dark:bg-black bg-gray-300 text-white font-medium border-b-1 border-dashed border-[#504f4f]">
             {/* Left Section */}
             <MobileNav/>
             <div className="hidden lg:flex items-center space-x-6">
@@ -43,14 +43,14 @@ export default function Navbar() {
                             M
                         </div>
                     </div>
-                    <span className="font-semibold text-lg"><Link href={"/"}>Magical UI</Link></span>
+                    <span className="font-semibold text-lg dark:text-white text-black"><Link href={"/"}>Magical UI</Link></span>
                 </div>
 
-                <ul className="flex items-center space-x-5 text-sm text-gray-300">
+                <ul className="flex items-center space-x-5 text-sm  text-black dark:text-gray-300">
                     <Link href={"/components"}>Components</Link>
                 </ul>
             </div>
-            <div className="flex items-center space-x-5 text-sm text-gray-300">
+            <div className="flex items-center space-x-5 text-sm dark:text-gray-300 text-black">
                 <SearchBar className="hidden lg:flex" />
                 <FaDiscord className="cursor-pointer" />
                 <FaTwitter className="cursor-pointer" />
