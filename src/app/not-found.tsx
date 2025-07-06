@@ -9,7 +9,7 @@ export default async function NotFound() {
       <p>Could not find requested resource</p>
       <div className="btn relative  cursor-pointer flex items-center justify-center rounded-[100px] border-none p-[2px] w-31 ">
         <p className="relative z-[1] w-full rounded-[100px] bg-black p-1 text-base text-[#fff] backdrop-blur-[40px]">
-          <Link href="/"> View all posts</Link>
+          <Link href="/components"> View all posts</Link>
         </p>
       </div>
     </div>
