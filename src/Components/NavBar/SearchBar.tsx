@@ -1,10 +1,8 @@
 'use client';
 
-import { ArrowDownRight, MoonIcon, Sun } from 'lucide-react';
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { Circle, File, Laptop, Moon } from "lucide-react"
+import { useCallback, useEffect, useState } from 'react';
+import { Circle, } from "lucide-react"
 import { Button } from '../UI/Button';
 import { cn } from '@/Lib/utils';
 import {

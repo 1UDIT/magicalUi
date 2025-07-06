@@ -15,11 +15,7 @@ const sections = [
     {
         title: "Content Display",
         items: ["Card", "TypingText", "CardAnimation", "TanstackTable"],
-    },
-    // {
-    //     title: "Navigation",
-    //     items: ["Breadcrumb", "Footer", "Navbar", "Tabs"],
-    // },
+    }, 
 ];
 
 const SideBar = () => {
