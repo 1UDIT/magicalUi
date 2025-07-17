@@ -7,7 +7,7 @@ interface RootLayoutProps {
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <div className="flex flex-col h-dvh antialiased dark:bg-black bg-white">
+    <div className="flex flex-col h-screen antialiased dark:bg-black bg-white">
       <Navbar />
       {children}
     </div>
