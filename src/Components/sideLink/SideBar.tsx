@@ -32,8 +32,8 @@ const SideBar = () => {
     };
 
     return (
-        <div className='container border-r border-dashed border-[#504f4f] bg-white dark:bg-gray-900 h-full'>
-            <aside className='fixed z-30 -ml-2 hidden h-[calc(100vh-6.5rem)] w-full h-full shrink-0 lg:sticky bg-white dark:bg-black lg:block lg:self-start border-r border-dashed border-[#504f4f]'>
+        <div className='border-r border-dashed border-[#504f4f] bg-white dark:bg-gray-900 h-full '>
+            <aside className='fixed z-30 -ml-2 hidden h-full   w-full  shrink-0 lg:sticky bg-white dark:bg-black lg:block lg:self-start border-r border-dashed border-[#504f4f]'>
                 <div className='relative overflow-hidden h-full py-6 pr-3 lg:py-8'>
                     <h3 className='mb-1 rounded-md px-2 py-1 font-semibold text-black dark:text-white'>
                         Components
