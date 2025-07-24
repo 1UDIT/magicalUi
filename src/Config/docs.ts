@@ -51,6 +51,16 @@ export const docsConfig = {
           href: "/components/TanstackTable",
           items: [],
         }, 
+        {
+          title: "Sidebar",
+          href: "/components/Sidebar",
+          items: [],
+        }, 
+        {
+          title: "Loader",
+          href: "/components/Loader",
+          items: [],
+        }, 
       ],
     }, 
      

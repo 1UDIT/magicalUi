@@ -3,14 +3,10 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from 'next/link';
 import React, { useState } from 'react'
 
-const sections = [
-    {
-        title: "Introduction",
-        items: ["Getting Started"],
-    },
+const sections = [ 
     {
         title: "Interactive Components",
-        items: ["Button", "SketchImage", "GlowingButton", "ShareButton"],
+        items: ["Button", "SketchImage", "GlowingButton", "ShareButton", "Rating", "Loader"],
     },
     {
         title: "Content Display",
@@ -57,14 +53,14 @@ const SideBar = () => {
                                 {openSections.includes(section.title) && (
                                     <ul className="mt-1 list-none  pl-2">
                                         {section.items.map((item) => (
-                                            <li
-                                                key={item}
-                                                className="border-l border-gray-300 hover:dark:border-white dark:border-gray-700 list-none text-lg hover:underline cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 px-2 py-1"
-                                            >
-                                                <Link href={`/components/${item}`}>
+                                            <Link href={`/components/${item}`} key={item}>
+                                                <li                                                   
+                                                    className="border-l border-gray-300 hover:dark:border-white dark:border-gray-700 list-none text-lg hover:underline cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 px-2 py-1"
+                                                >
+
                                                     {item}
-                                                </Link>
-                                            </li>
+                                                </li>
+                                            </Link>
                                         ))}
                                     </ul>
                                 )}

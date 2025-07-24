@@ -1,11 +1,11 @@
+ 
 import Link from "next/link";
-import AnimatedGradientText from "@/Components/UI/AnimatedGradientText";
+import AnimatedGradientText from "@/Components/UI/AnimatedGradientText"; 
 
 export default async function RootLayout() {
     return (
         <main className="flex-grow flex flex-col items-center justify-center px-4 dark:text-white text-black bg-gray-200 dark:bg-black">
             <section className="text-center mb-8 md:mb-12">
-
                 <AnimatedGradientText
                     speed={2}
                     colorFrom="#4ade80"
@@ -14,7 +14,6 @@ export default async function RootLayout() {
                 >
                     MagicalUI
                 </AnimatedGradientText>
-
                 <p className="mt-3 md:mt-4 text-xl">
                     UI library for Engineers
                 </p>
@@ -26,6 +25,8 @@ export default async function RootLayout() {
                     </div>
                 </div>
             </section>
+            <div className="grid grid-cols-2 w-full max-w-4xl mx-auto"> 
+            </div>
         </main >
     );
 }

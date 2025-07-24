@@ -3,8 +3,8 @@
 import { MoonIcon, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import SearchBar from './SearchBar';  
+import { FaTwitter } from 'react-icons/fa';
+import SearchBar from './SearchBar';
 import { MobileNav } from './MobileNav';
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
     return (
         <nav className="flex items-center justify-between px-6 py-3 dark:bg-black bg-gray-300 text-white font-medium border-b-1 border-dashed border-[#504f4f]">
             {/* Left Section */}
-            <MobileNav/>
+            <MobileNav />
             <div className="hidden lg:flex items-center space-x-6">
                 <div className="flex items-center space-x-2 relative z-10 overflow-visible">
                     <div className="relative w-8 h-8">
@@ -52,7 +52,6 @@ export default function Navbar() {
             </div>
             <div className="flex items-center space-x-5 text-sm dark:text-gray-300 text-black">
                 <SearchBar className="hidden lg:flex" />
-                <FaDiscord className="cursor-pointer" />
                 <FaTwitter className="cursor-pointer" />
                 {isMounted && (
                     darkMode
