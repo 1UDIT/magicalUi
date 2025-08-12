@@ -20,7 +20,7 @@ export default async function RootLayout() {
                 <div className="w-full flex items-center justify-center mt-4">
                     <div className="btn relative  cursor-pointer flex items-center justify-center rounded-[100px] border-none p-[2px] w-31 ">
                         <p className="relative z-[1] w-full rounded-[100px] bg-black p-1 text-base text-[#fff] backdrop-blur-[40px]">
-                            <Link href={'/components'}>Get Started →</Link>
+                            <Link href={'/docs/components'}>Get Started →</Link>
                         </p>
                     </div>
                 </div>

@@ -19,14 +19,14 @@ export function MobileNav() {
             <SheetTrigger asChild>
                 <Button
                     variant="ghost"
-                    className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+                    className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden"
                 >
                     <svg
                         strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="size-5"
+                        className="size-5 text-black dark:text-white"
                     >
                         <path
                             d="M3 5H11"
@@ -62,25 +62,39 @@ export function MobileNav() {
                         className="flex items-center h-16 px-4 border-b border-border"
                     >
                         <span className="font-bold">MagicalUI</span>
-                    </Link>
-
-                    {/* Scrollable Nav Content */}
-                    <div className="flex-1 overflow-y-auto px-4 py-6">
-                        <div className="flex flex-col gap-6">
-                            {docsConfig.sidebarNav.map((group, index) => (
-                                <div key={index} className="flex flex-col gap-4">
-                                    {group.items.map((navItem) => (
-                                        <MobileLink
-                                            key={`${navItem.href}-${index}`}
-                                            href={navItem.href}
-                                            onOpenChange={setIsOpen}
-                                        >
-                                            {navItem.title}
-                                        </MobileLink>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
+                    </Link> 
+                    <div className="flex-1 overflow-y-auto px-4 py-6"> 
+                        <nav className="space-y-2">
+                            {docsConfig.sidebarNav.map((item, i) =>
+                                item.items ? (
+                                    <div key={i}>
+                                        <p className="text-sm font-semibold text-gray-600 dark:text-white mb-1">
+                                            {item.title}
+                                        </p>
+                                        <ul className="ml-3 space-y-1">
+                                            {item?.items?.map((subItem, j) => (
+                                                <li key={j}>
+                                                    <Link
+                                                        href={subItem.href}
+                                                        className="block rounded px-2 py-1 text-gray-700 dark:text-white"
+                                                    >
+                                                        {subItem.title}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        key={i}
+                                        href={item.href!}
+                                        className="block rounded px-2 py-1 text-gray-700 dark:text-white hover:bg-gray-200 hover:text-gray-900"
+                                    >
+                                        {item.title}
+                                    </Link>
+                                )
+                            )}
+                        </nav>
                     </div>
                 </div>
             </SheetContent>

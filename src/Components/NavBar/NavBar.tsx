@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { FaTwitter } from 'react-icons/fa';
 import SearchBar from './SearchBar';
 import { MobileNav } from './MobileNav';
+import { FaGithub } from 'react-icons/fa6';
 
 export default function Navbar() {
     const [darkMode, setDarkMode] = useState(true);
@@ -52,7 +53,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center space-x-5 text-sm dark:text-gray-300 text-black">
                 <SearchBar className="hidden lg:flex" />
-                <FaTwitter className="cursor-pointer" />
+                <FaGithub className="cursor-pointer" />
                 {isMounted && (
                     darkMode
                         ? <MoonIcon className="cursor-pointer" onClick={() => setDarkMode(false)} />

@@ -94,7 +94,7 @@ function SearchBar({
                         </CommandEmpty>
                         {docsConfig.sidebarNav.map((group) => (
                             <CommandGroup key={group.title} heading={group.title}>
-                                {group.items.map((navItem) => (
+                                {group?.items?.map((navItem) => (
                                     <CommandItem
                                         key={navItem.href}
                                         value={navItem.title}

@@ -46,7 +46,7 @@ const Loading: React.FC<LoadingProps> = ({
                         } as React.CSSProperties
                     }
                     className={`w-full h-full rounded-full`}
-                    animate={{ rotate: -360 }}
+                    animate={{ rotate: 360 }}
                     transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
                 />
             </motion.div>
