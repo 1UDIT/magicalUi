@@ -47,7 +47,8 @@ export default function Navbar() {
                     <span className="font-semibold text-lg dark:text-white text-black"><Link href={"/"}>Magical UI</Link></span>
                 </div>
 
-                <ul className="flex items-center space-x-5 text-sm  text-black dark:text-gray-300">
+                <ul className="font-bold text-base border-b-2 border-transparent transition-colors hover:text-gray-900 hover:border-gray-500 dark:hover:text-[#eaa170] 
+                dark:text-white text-black  dark:hover:border-black">
                     <Link href={"/components"}>Components</Link>
                 </ul>
             </div>

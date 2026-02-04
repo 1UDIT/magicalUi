@@ -1,0 +1,28 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"></stop>
+      <stop offset="50%" stop-color="#a855f7"></stop>
+      <stop offset="100%" stop-color="#3b82f6"></stop>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Glow -->
+  <rect x="8" y="8" width="48" height="48" rx="10" fill="url(#grad)" opacity="0.6" filter="url(#glow)"></rect>
+
+  <!-- Main card -->
+  <rect x="12" y="12" width="40" height="40" rx="8" fill="white"></rect>
+
+  <!-- Letter -->
+  <text x="32" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="black" font-family="Arial, Helvetica, sans-serif">
+    M
+  </text>
+</svg>
