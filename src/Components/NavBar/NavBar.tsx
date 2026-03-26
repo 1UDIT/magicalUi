@@ -33,7 +33,7 @@ export default function Navbar() {
     }, [darkMode, isMounted]);
 
     return (
-        <nav className="flex items-center justify-between px-6 py-3 dark:bg-black bg-gray-300 text-white font-medium border-b-1 border-dashed border-[#504f4f]">
+        <nav className="flex items-center justify-between px-6 py-3 dark:bg-black  text-white font-medium border-b-1 border-dashed border-[#504f4f]">
             {/* Left Section */}
             <MobileNav />
             <div className="hidden lg:flex items-center space-x-6">

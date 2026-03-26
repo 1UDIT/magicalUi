@@ -41,6 +41,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+ 
+
 
 .hero-section {
   display: flex;
@@ -176,3 +178,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
