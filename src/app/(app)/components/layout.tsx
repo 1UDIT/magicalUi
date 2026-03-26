@@ -16,7 +16,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   const pathname = usePathname();
   const pager = getPagerForDoc(pathname);
-  console.log(pager, "pager")
+  // console.log(pager, "pager")
 
   return (
     <div className="w-full flex-1 items-start px-4 lg:grid lg:grid-cols-[270px_minmax(0,1fr)] grid-cols-1 lg:gap-10 lg:px-8">

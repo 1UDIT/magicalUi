@@ -42,13 +42,13 @@ export default function Hero() {
                     </p>
 
                     <div className="mt-6">
-                        <button className="px-6 py-3 rounded-full
+                        <Link className="px-6 py-3 rounded-full
                             bg-gradient-to-r from-cyan-400 to-blue-500
                             text-black font-semibold 
                             hover:shadow-[0_0_10px_rgba(0,245,255,0.9)]
-                            transition">
+                            transition" href={"/components"}>
                             Get Started →
-                        </button>
+                        </Link>
 
                     </div>
                 </section>
