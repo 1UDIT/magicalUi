@@ -141,10 +141,10 @@ export default function HoldActionButton({
 
   return (
     <motion.button
-      ref={buttonRef} // ✅ REQUIRED
+      ref={buttonRef}  
       type="button"
       onPointerDown={startHold}
-      onPointerMove={handlePointerMove} // ✅ NOW IT WILL WORK
+      onPointerMove={handlePointerMove} 
       onPointerUp={cancelHold}
       onPointerCancel={cancelHold}
       whileTap={{ scale: 0.97 }}

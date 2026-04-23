@@ -46,7 +46,7 @@ const SortableItem = ({
     };
 
     return (
-        <div style={style} className=' text-black'> <span ref={setNodeRef}  {...attributes} {...listeners}><RxHamburgerMenu /></span>
+        <div style={style} {...attributes} {...listeners} className='text-black'> <span ref={setNodeRef}  ><RxHamburgerMenu /></span>
             <label>
                 <input
                     type="checkbox"
