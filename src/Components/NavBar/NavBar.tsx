@@ -54,12 +54,14 @@ export default function Navbar() {
             </div>
             <div className="flex items-center space-x-5 text-sm dark:text-gray-300 text-black">
                 <SearchBar className="hidden lg:flex" />
-                <FaGithub className="cursor-pointer" />
-                {isMounted && (
+                <Link href={"https://github.com/1UDIT/magicalUi"} target="_blank">
+                    <FaGithub className="cursor-pointer" />
+                </Link>
+                {/* {isMounted && (
                     darkMode
                         ? <MoonIcon className="cursor-pointer" onClick={() => setDarkMode(false)} />
                         : <Sun className="cursor-pointer" onClick={() => setDarkMode(true)} />
-                )}
+                )} */}
             </div>
         </nav>
     );

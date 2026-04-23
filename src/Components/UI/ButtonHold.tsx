@@ -67,6 +67,8 @@ export default function HoldActionButton({
 }: HoldActionButtonProps) {
   const progress = useMotionValue(0);
   const width = useTransform(progress, (v) => `${v}%`);
+
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const animationRef = useRef<ReturnType<typeof animate> | null>(null);
 
   const [isHolding, setIsHolding] = useState(false);
@@ -75,8 +77,10 @@ export default function HoldActionButton({
   const current = VARIANT_STYLES[variant];
   const Icon = current.Icon;
 
-  const startHold = () => {
+  const startHold = (e: React.PointerEvent<HTMLButtonElement>) => {
     if (isHolding) return;
+
+    e.currentTarget.setPointerCapture(e.pointerId); // ✅ IMPORTANT
 
     setCompleted(false);
     setIsHolding(true);
@@ -110,10 +114,37 @@ export default function HoldActionButton({
     });
   };
 
+  const resetProgress = () => {
+    animationRef.current?.stop();
+    setIsHolding(false);
+    animate(progress, 0, {
+      duration: 0.15,
+      ease: "easeOut",
+    });
+  };
+
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!isHolding || !buttonRef.current || completed) return;
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const inside =
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+
+    if (!inside) {
+      resetProgress();
+    }
+  };
+
   return (
     <motion.button
+      ref={buttonRef} // ✅ REQUIRED
       type="button"
       onPointerDown={startHold}
+      onPointerMove={handlePointerMove} // ✅ NOW IT WILL WORK
       onPointerUp={cancelHold}
       onPointerCancel={cancelHold}
       whileTap={{ scale: 0.97 }}
