@@ -5,6 +5,7 @@ export const docsConfig = {
       title: "Interactive Components",
       items: [
         { title: "Button", href: "/components/Button" },
+        { title: "Button(Hold)", href: "/components/ButtonHold" },
         { title: "Sketch Image", href: "/components/SketchImage" },
         { title: "Glowing Button", href: "/components/GlowingButton" },
         { title: "Share Button", href: "/components/ShareButton" }, 

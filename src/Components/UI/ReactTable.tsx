@@ -216,86 +216,84 @@ export default function ReactTable() {
     };
 
     return (
-        <div className="p-4">
-            <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
-            >
-                <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4">
-                    {/* Draggable List */}
-                    <div className="w-full border border-gray-300 rounded p-2">
-                        <h4 className="font-semibold mb-2">Reorder & Toggle Columns</h4>
-                        <div className="inline-block border border-black shadow rounded w-full">
-                            <div className="px-1 border-b border-black">
-                                <label>
-                                    <input
-                                        {...{
-                                            type: 'checkbox',
-                                            checked: table.getIsAllColumnsVisible(),
-                                            onChange: table.getToggleAllColumnsVisibilityHandler(),
-                                        }}
-                                    />{' '}
-                                    Toggle All
-                                </label>
+        <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+        >
+            <div className="grid grid-cols-1 2xl:grid-cols-[290px_minmax(0,1fr)] gap-4">
+                {/* Draggable List */}
+                <div className="w-full border border-gray-300 rounded p-2">
+                    <h4 className="font-semibold mb-2">Reorder & Toggle Columns</h4>
+                    <div className="inline-block border border-black shadow rounded w-full">
+                        <div className="px-1 border-b border-black">
+                            <label>
+                                <input
+                                    {...{
+                                        type: 'checkbox',
+                                        checked: table.getIsAllColumnsVisible(),
+                                        onChange: table.getToggleAllColumnsVisibilityHandler(),
+                                    }}
+                                />{' '}
+                                Toggle All
+                            </label>
 
-                                <SortableContext items={columnOrder} strategy={verticalListSortingStrategy}>
-                                    {table.getAllLeafColumns().map((column) => (
-                                        <SortableItem
-                                            key={column.id}
-                                            id={column.id}
-                                            column={column}
-                                        />
-                                    ))}
-                                </SortableContext>
-                            </div>
+                            <SortableContext items={columnOrder} strategy={verticalListSortingStrategy}>
+                                {table.getAllLeafColumns().map((column) => (
+                                    <SortableItem
+                                        key={column.id}
+                                        id={column.id}
+                                        column={column}
+                                    />
+                                ))}
+                            </SortableContext>
                         </div>
                     </div>
+                </div>
 
-                    {/* Table */}
-                    <div className="flex-1">
-                        <table className="border-collapse border border-gray-300 w-full">
-                            <thead>
-                                {table.getHeaderGroups().map(headerGroup => (
-                                    <tr key={headerGroup.id}>
-                                        {headerGroup.headers.map(header => (
-                                            <th key={header.id} colSpan={header.colSpan}>
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-                                            </th>
+                {/* Table */}
+                <div className="flex-1">
+                    <table className="border-collapse border border-gray-300 w-full">
+                        <thead>
+                            {table.getHeaderGroups().map(headerGroup => (
+                                <tr key={headerGroup.id}>
+                                    {headerGroup.headers.map(header => (
+                                        <th key={header.id} colSpan={header.colSpan}>
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(
+                                                    header.column.columnDef.header,
+                                                    header.getContext()
+                                                )}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody>
+                            {table.getRowModel().rows
+                                .filter(row => !isRowHidden(row.index)) // Exclude hidden rows
+                                .map(row => (
+                                    <tr
+                                        key={row.id}
+                                        tabIndex={row.index}
+                                        className={`font-medium h-7 text-center 
+                        ${keyNavigation === row.index
+                                                ? 'bg-[#e0cfb0] text-black'
+                                                : 'text-white odd:bg-[#24303f] even:bg-[#2d3d52]'}`}
+                                        onClick={() => setKeyNavigation(row.index)}
+                                    >
+                                        {row.getVisibleCells().map(cell => (
+                                            <td key={cell.id}>
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </td>
                                         ))}
                                     </tr>
                                 ))}
-                            </thead>
-                            <tbody>
-                                {table.getRowModel().rows
-                                    .filter(row => !isRowHidden(row.index)) // Exclude hidden rows
-                                    .map(row => (
-                                        <tr
-                                            key={row.id}
-                                            tabIndex={row.index}
-                                            className={`font-medium h-7 text-center 
-                        ${keyNavigation === row.index
-                                                    ? 'bg-[#e0cfb0] text-black'
-                                                    : 'text-white odd:bg-[#24303f] even:bg-[#2d3d52]'}`}
-                                            onClick={() => setKeyNavigation(row.index)}
-                                        >
-                                            {row.getVisibleCells().map(cell => (
-                                                <td key={cell.id}>
-                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                </td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-            </DndContext>
-        </div>
+            </div>
+        </DndContext>
     );
 }

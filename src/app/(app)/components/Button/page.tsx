@@ -35,7 +35,7 @@ export default App;
 
   return (
     <div>
-      <div className="w-full h-[400px] mx-auto  dark:bg-black bg-white text-white rounded-lg shadow-md p-4 mt-10 border border-[#504f4f] p-2">
+      <div className="w-full h-[550px] mx-auto  dark:bg-black bg-white text-white rounded-lg shadow-md p-4 mt-10 border border-[#504f4f] p-2">
         <div className="border-b border-dashed border-[#504f4f]">
           <button
             onClick={() => setActiveTab("Preview")}
